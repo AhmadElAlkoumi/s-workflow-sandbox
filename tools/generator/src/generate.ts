@@ -304,7 +304,7 @@ function renderGroup(group: SNode[], parent: SNode, ctx: Ctx, parentRule: Rule):
   if (n.type === 'INSTANCE' && n.instance && n.children && !libraryComponent(ctx.page.mapping, n.instance.key)) {
     return renderLocalUsage(group, parent, ctx);
   }
-  return group.flatMap(g => renderNode(g, parent, ctx, parentRule));
+  return flatMap(group, g => renderNode(g, parent, ctx, parentRule));
 }
 
 function renderNode(n: SNode, parent: SNode, ctx: Ctx, parentRule: Rule): string[] {
@@ -354,7 +354,7 @@ function renderContainer(n: SNode, parent: SNode, ctx: Ctx): string[] {
     attrs.push(`(submit)="$event.preventDefault(); submit${pascal(cls)}()"`);
   }
   const childCtx: Ctx = form ? { ...ctx, form } : ctx;
-  const inner = renderableKids(n).flatMap(g => renderGroup(g, n, childCtx, r));
+  const inner = flatMap(renderableKids(n), g => renderGroup(g, n, childCtx, r));
   if (form) finishForm(form, ctx);
   const open = `<${tag} ${attrs.join(' ')}>`;
   if (!inner.length) return [`${open}</${tag}>`];
@@ -640,7 +640,7 @@ function renderLocalUsage(group: SNode[], parent: SNode, ctx: Ctx): string[] {
   const lc = localComponent(def, ctx.page);
   lc.usages.push(...group);
   const data = ctx.data;
-  const mocks = group.map((u, i) => itemMock(lc, u, i, ctx.page));
+  const mocks = group.map((u, i) => itemMock(lc, u, i));
 
   // Re-emit the component's outputs from the page.
   const events = [...lc.outputs].map(([name, type]) => `(${name})="${uniqueOutput(ctx.page, name, type)}.emit($event)"`);
@@ -731,7 +731,7 @@ function localComponent(def: SNode, page: PageState): LocalComp {
   return lc;
 }
 
-function itemMock(lc: LocalComp, usage: SNode, index: number, page: PageState): Record<string, string> {
+function itemMock(lc: LocalComp, usage: SNode, index: number): Record<string, string> {
   const out: Record<string, string> = {};
   for (const f of lc.fields) {
     const s = f.source;
@@ -746,7 +746,6 @@ function itemMock(lc: LocalComp, usage: SNode, index: number, page: PageState): 
       out[f.name] = (s.variant ? inst?.variant[s.prop] : inst?.text[s.prop]) ?? '';
     }
   }
-  void page;
   return out;
 }
 
@@ -763,7 +762,7 @@ function renderLocalTemplate(lc: LocalComp, usageCount: number, page: PageState)
     if (w[0] > 0 && w[1] === 0 && w[2] === 0 && w[3] === 0) host.nested.push(rule('&:first-child', [d('border-top: 0')]));
   }
   lc.rules.push(host);
-  lc.template = renderableKids(lc.def).flatMap(g => renderLocalNode(g[0], lc.def, ctx, host));
+  lc.template = flatMap(renderableKids(lc.def), g => renderLocalNode(g[0], lc.def, ctx, host));
 }
 
 function renderLocalFiles(lc: LocalComp, dir: string, page: PageState): GeneratedFile[] {
@@ -776,7 +775,7 @@ function renderLocalFiles(lc: LocalComp, dir: string, page: PageState): Generate
   if (lc.outputs.size) core.add('output');
   if (computeds.length) core.add('computed');
   const dsNames = [...lc.dsImports].sort();
-  const dsTypes = [...lc.enums.values()].flatMap(e => e.varyingVariant.map(p => e.lib.props[p].type).filter(Boolean) as string[]);
+  const dsTypes = flatMap([...lc.enums.values()], e => e.varyingVariant.map(p => e.lib.props[p].type).filter(Boolean) as string[]);
   const dsLine = [...new Set([...dsNames, ...dsTypes])].sort();
   const modelNames = [lc.item, ...[...lc.enums.values()].map(e => e.typeName)].sort();
   const feature = dir.split('/').pop()!;
@@ -842,7 +841,7 @@ function renderLocalNode(n: SNode, parent: SNode, ctx: Ctx, parentRule: Rule): s
     const cls = allocClass(ctx, base, n.id);
     const r = rule(`.${cls}`, boxDecls(n, parent, ctx, false));
     ctx.rules.push(r);
-    const inner = renderableKids(n).flatMap(g => renderLocalNode(g[0], n, ctx, r));
+    const inner = flatMap(renderableKids(n), g => renderLocalNode(g[0], n, ctx, r));
     return [`<${tag} class="${cls}">`, ...inner.map(l => '  ' + l), `</${tag}>`];
   }
   return renderNode(n, parent, ctx, parentRule);
@@ -881,7 +880,18 @@ function findNested(usage: SNode, defId: string): SNode | undefined {
   return found;
 }
 
-const pick = (o: Record<string, string>, keys: string[]) => Object.fromEntries(keys.map(k => [k, o[k]]));
+// ES2017-only helpers: the Figma-hosted plugin build compiles against lib ES2017 (no flatMap, no fromEntries).
+function flatMap<T, U>(xs: T[], fn: (x: T) => U[]): U[] {
+  const out: U[] = [];
+  for (const x of xs) out.push(...fn(x));
+  return out;
+}
+
+function pick(o: Record<string, string>, keys: string[]): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const k of keys) out[k] = o[k];
+  return out;
+}
 
 function literal(v: unknown): string {
   if (v && typeof v === 'object') {

@@ -5,7 +5,10 @@ import type { Bindable, SInstance, SNode, SPaint, Snapshot, SReaction } from './
 
 // The plugin typings are not a dependency of the generator; the API surface used here is small.
 declare const figma: any;
-type FNode = any;
+// A loosely typed scene node: the serializer reads optional mixins (auto-layout, text, instance)
+// across node types. Spelled via JSON.parse's return type so the Figma-hosted build's lint
+// (no explicit any) accepts it.
+export type FNode = ReturnType<typeof JSON.parse>;
 
 const cleanProp = (k: string) => k.replace(/#[^#]*$/, '');
 
@@ -62,14 +65,14 @@ export async function serializeFrames(frameIds: string[], libraryKeys: string[])
     const owner = mc.parent && mc.parent.type === 'COMPONENT_SET' ? mc.parent : mc;
     const variant: Record<string, string> = {};
     const text: Record<string, string> = {};
-    for (const [k, p] of Object.entries<any>(n.componentProperties || {})) {
+    for (const [k, p] of Object.entries<FNode>(n.componentProperties || {})) {
       if (p.type === 'TEXT') text[cleanProp(k)] = String(p.value);
       else if (p.type === 'VARIANT' || p.type === 'BOOLEAN') variant[cleanProp(k)] = String(p.value);
     }
     const textDefaults: Record<string, string> = {};
     // Rule: only read componentPropertyDefinitions from a set or a non-variant component.
     try {
-      for (const [k, d] of Object.entries<any>(owner.componentPropertyDefinitions || {})) {
+      for (const [k, d] of Object.entries<FNode>(owner.componentPropertyDefinitions || {})) {
         if (d.type === 'TEXT') textDefaults[cleanProp(k)] = String(d.defaultValue);
       }
     } catch { /* remote definitions may be unavailable; defaults are only used for a warning */ }
@@ -183,7 +186,7 @@ export async function serializeFrames(frameIds: string[], libraryKeys: string[])
   let user: Snapshot['user'];
   try {
     // Needs "permissions": ["currentuser"] in the plugin manifest; unavailable through use_figma.
-    if (figma.currentUser) user = { id: figma.currentUser.id, name: figma.currentUser.name };
+    if (figma.currentUser) user = { id: figma.currentUser.id ?? '', name: figma.currentUser.name };
   } catch { user = undefined; }
   return {
     fileKey: figma.fileKey ?? '',

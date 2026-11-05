@@ -95,6 +95,16 @@ node tools/generator/dist/cli.js <snapshot.json> [--out dir] [--check]   # gener
 For the private org release, replace `"id"` in `manifest.json` with the id Figma assigns and
 put the real service domain in `networkAccess.allowedDomains`.
 
+### Run it without importing (Figma-hosted)
+
+The same plugin also lives in the Figma account library as a hosted plugin (id
+`bd22f70e-7636-44ef-bdde-fb1cf4887833`), so it runs from a link with no import or publishing:
+<https://www.figma.com/design/n7GpHuPLWNrhdqkyGQrRDX?try-tool-resource-content-id=bd22f70e-7636-44ef-bdde-fb1cf4887833&try-tool-resource-type=gen_tool>.
+It checks and previews only (no network access, so no push). Rebuild its single-file source with
+`SHIP_GENERATIVE_ID=bd22f70e-7636-44ef-bdde-fb1cf4887833 npm run plugin:build` → `dist/generative/`.
+Figma compiles it against ES2017 with a strict lint (no `any`, no `var`), which is why the
+generator avoids `flatMap`/`fromEntries` and types loose nodes as `FNode`.
+
 ### Run the service (pilot)
 
 Tokens live only on the service. Each designer creates a fine-grained GitHub token scoped

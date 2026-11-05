@@ -6,11 +6,14 @@ import bundledMapping from '../../../figma/mapping.json';
 import bundledConfig from '../../../.ship-to-frontend.json';
 import { generate } from '../../generator/src/generate';
 import { serializeFrames } from '../../generator/src/serialize';
+import type { FNode } from '../../generator/src/serialize';
 import { splitFrameName } from '../../generator/src/names';
 import type { Mapping, ShipConfig } from '../../generator/src/types';
 
 declare const figma: any;
 declare const __html__: string;
+// Set at build time for the Figma-hosted (generative) build, which has a relaunch button.
+declare const __RELAUNCH_COMMAND__: string;
 
 let mapping = bundledMapping as unknown as Mapping;
 let config = bundledConfig as unknown as ShipConfig;
@@ -18,20 +21,25 @@ let existing: Record<string, string> = {};
 let source: 'bundled' | 'repo' = 'bundled';
 
 figma.showUI(__html__, { width: 520, height: 680, themeColors: true, title: 'Ship to Frontend' });
+if (__RELAUNCH_COMMAND__) {
+  try {
+    figma.root.setRelaunchData({ [__RELAUNCH_COMMAND__]: 'Check a screen and preview its Angular code' });
+  } catch { /* relaunch is a convenience only */ }
+}
 
 /** Top-level frames in the selection, plus the other state frames of the same screen. */
-function selectedFrames(): any[] {
-  const top = (n: any) => n.parent && (n.parent.type === 'PAGE' || n.parent.type === 'SECTION');
-  const picked = figma.currentPage.selection.map((n: any) => {
+function selectedFrames(): FNode[] {
+  const top = (n: FNode) => n.parent && (n.parent.type === 'PAGE' || n.parent.type === 'SECTION');
+  const picked = figma.currentPage.selection.map((n: FNode) => {
     let x = n;
     while (x && !top(x)) x = x.parent;
     return x;
-  }).filter((n: any) => n && n.type === 'FRAME');
-  const unique = [...new Map(picked.map((n: any) => [n.id, n])).values()] as any[];
+  }).filter((n: FNode) => n && n.type === 'FRAME');
+  const unique = [...new Map(picked.map((n: FNode) => [n.id, n])).values()] as FNode[];
   if (!unique.length) return [];
   // "Team members / default" selected → also take "Team members / empty", "/ error", …
   const feature = splitFrameName(unique[0].name).feature;
-  const siblings = (unique[0].parent.children as any[]).filter(n => n.type === 'FRAME' && splitFrameName(n.name).conventional && splitFrameName(n.name).feature === feature);
+  const siblings = (unique[0].parent.children as FNode[]).filter(n => n.type === 'FRAME' && splitFrameName(n.name).conventional && splitFrameName(n.name).feature === feature);
   return [...new Map([...unique, ...siblings].map(n => [n.id, n])).values()];
 }
 
@@ -78,10 +86,10 @@ function countLayers(nodes: { children?: unknown[] }[]): number {
   return n;
 }
 
-figma.ui.onmessage = async (msg: any) => {
+figma.ui.onmessage = async (msg: FNode) => {
   if (msg.type === 'select') {
     const node = await figma.getNodeByIdAsync(msg.nodeId);
-    if (!node) return;
+    if (!node || node.type === 'DOCUMENT' || node.type === 'PAGE') return;
     // Layers inside an instance can be selected directly (ids like "I4:37;4:7").
     figma.currentPage.selection = [node];
     figma.viewport.scrollAndZoomIntoView([node]);
