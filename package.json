@@ -9,7 +9,13 @@
     "start": "npm run tokens && ng serve",
     "build": "npm run tokens && npm run check:ds && ng build",
     "figma:publish": "figma connect publish",
-    "figma:parse": "figma connect parse"
+    "figma:parse": "figma connect parse",
+    "check:mapping": "node scripts/check-mapping.mjs",
+    "generator:build": "tsc -p tools/generator",
+    "generator:test": "npm run generator:build && node tools/generator/test/run.mjs",
+    "plugin:build": "node tools/figma-plugin/build.mjs",
+    "service:test": "node tools/service/test.mjs",
+    "service:start": "node tools/service/server.mjs"
   },
   "dependencies": {
     "@angular/common": "^20.0.0",
@@ -27,6 +33,8 @@
     "@angular/cli": "^20.0.0",
     "@angular/compiler-cli": "^20.0.0",
     "@figma/code-connect": "^1.5.2",
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.28.0",
     "sass": "^1.80.0",
     "typescript": "~5.8.0"
   }

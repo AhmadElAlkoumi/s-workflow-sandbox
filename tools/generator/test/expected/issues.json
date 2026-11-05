@@ -1,0 +1,16 @@
+[
+  {
+    "rule": "states",
+    "severity": "warn",
+    "nodeId": "4:11",
+    "nodeName": "Team members / default",
+    "message": "\"Team members\" has no \"Team members / empty\", \"Team members / loading\", \"Team members / error\" frame. Frontend will need to design these states."
+  },
+  {
+    "rule": "data-names",
+    "severity": "warn",
+    "nodeId": "4:7",
+    "nodeName": "Badge",
+    "message": "\"Badge\" changes per _MemberRow row, so it becomes the data field \"badge\". Rename the layer (e.g. \"status\") to name the field."
+  }
+]

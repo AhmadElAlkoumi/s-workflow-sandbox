@@ -1,0 +1,15 @@
+{
+  "name": "Ship to Frontend",
+  "id": "ship-to-frontend-dev",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html",
+  "editorType": ["figma"],
+  "documentAccess": "dynamic-page",
+  "permissions": ["currentuser"],
+  "networkAccess": {
+    "allowedDomains": ["https://ship-to-frontend.example.com"],
+    "devAllowedDomains": ["http://localhost:8787"],
+    "reasoning": "The plugin talks only to the Ship to Frontend service, which reads the repo settings and opens the pull request. Designers never handle GitHub tokens."
+  }
+}

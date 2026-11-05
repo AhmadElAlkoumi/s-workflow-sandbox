@@ -13,6 +13,7 @@ A small, real test of the designer → frontend workflow:
 | Code Connect templates | `figma/*.figma.ts` | Dev Mode shows these Angular snippets |
 | AI rulebook | `AGENTS.md` (Claude Code reads it through `CLAUDE.md`) | — |
 | Guardrails | `scripts/check-ds-usage.mjs`, `.github/workflows/ci.yml` | — |
+| Ship to Frontend (plugin, generator, service) | `tools/` (see `tools/README.md`), `figma/mapping.json`, `.ship-to-frontend.json` | Plugins → Ship to Frontend |
 
 Figma file: https://www.figma.com/design/n7GpHuPLWNrhdqkyGQrRDX
 
