@@ -3,7 +3,7 @@
 //   SHIP_SERVICE_URL=https://… npm run plugin:build → push enabled
 // The service URL must also be listed in manifest.json networkAccess.
 import { build } from 'esbuild';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -21,6 +21,19 @@ const bundle = (outfile, relaunch) => build({
   logLevel: 'warning',
 });
 await bundle(join(dist, 'code.js'), '');
+
+const service = (process.env.SHIP_SERVICE_URL ?? '').replace(/\/$/, '');
+const manifest = JSON.parse(readFileSync(join(here, 'manifest.json'), 'utf8'));
+const allowed = [...(manifest.networkAccess.allowedDomains ?? []), ...(manifest.networkAccess.devAllowedDomains ?? [])];
+if (service && !allowed.some(d => service.startsWith(d))) {
+  console.error(`SHIP_SERVICE_URL ${service} is not in manifest.json networkAccess; Figma would block it.`);
+  process.exit(1);
+}
+const ui = readFileSync(join(here, 'src/ui.html'), 'utf8').replace('__SERVICE_URL__', service);
+writeFileSync(join(dist, 'ui.html'), ui);
+// Fail loudly if an output is missing (both files are what Figma loads from manifest.json).
+for (const f of [manifest.main, manifest.ui]) if (!existsSync(join(here, f))) { console.error(`missing ${f}`); process.exit(1); }
+console.log(`plugin built → ${dist} (service: ${service || 'none'})`);
 
 // Figma-hosted build (a "generative plugin" in the account library). Figma builds it from a
 // single, lint-clean TypeScript file, so the generator sources are concatenated (not bundled)
