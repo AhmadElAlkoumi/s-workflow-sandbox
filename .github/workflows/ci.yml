@@ -14,8 +14,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+      # Switch to `npm ci` (and add `cache: npm` above) once package-lock.json is committed.
+      - run: npm install --no-audit --no-fund
       - name: Tokens are in sync with tokens.json
         run: |
           npm run tokens
@@ -30,14 +30,17 @@ jobs:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: guardrails
     runs-on: ubuntu-latest
+    env:
+      FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
     steps:
       - uses: actions/checkout@v4   # required: the official example omits this step
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
+      - run: npm install --no-audit --no-fund
       - name: Publish mappings
+        if: env.FIGMA_ACCESS_TOKEN != ''
         run: npx figma connect publish --exit-on-unreadable-files
-        env:
-          FIGMA_ACCESS_TOKEN: ${{ secrets.FIGMA_ACCESS_TOKEN }}
+      - name: Skip (no FIGMA_ACCESS_TOKEN secret yet)
+        if: env.FIGMA_ACCESS_TOKEN == ''
+        run: echo "Add a FIGMA_ACCESS_TOKEN repo secret with Code Connect write scope to publish mappings."
