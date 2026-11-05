@@ -1,0 +1,10 @@
+{
+  "codeConnect": {
+    "include": ["figma/**/*.figma.ts"],
+    "label": "Angular",
+    "language": "html",
+    "documentUrlSubstitutions": {
+      "<FIGMA_DS_FILE>": "https://www.figma.com/design/n7GpHuPLWNrhdqkyGQrRDX/DS-Workflow-Sandbox"
+    }
+  }
+}

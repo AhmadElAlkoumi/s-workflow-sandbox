@@ -1,0 +1,21 @@
+@use 'tokens' as *;
+
+:host { display: flex; flex-direction: column; gap: var(--ds-spacing-xs); }
+
+.ds-input__label { @include ds-type(label-md); color: var(--ds-color-text-primary); }
+
+.ds-input__field {
+  @include ds-type(body-md);
+  padding: var(--ds-spacing-sm) var(--ds-spacing-md);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-md);
+  background: var(--ds-color-bg-surface);
+  color: var(--ds-color-text-primary);
+
+  &::placeholder { color: var(--ds-color-text-secondary); }
+  &:focus-visible { outline: 2px solid var(--ds-color-bg-brand); outline-offset: 1px; }
+}
+.ds-input__field--error { border-color: var(--ds-color-border-danger); }
+
+.ds-input__hint { @include ds-type(body-sm); color: var(--ds-color-text-secondary); }
+.ds-input__hint--error { color: var(--ds-color-text-danger); }

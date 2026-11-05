@@ -1,0 +1,13 @@
+@use 'tokens' as *;
+
+:host {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--ds-spacing-xs) var(--ds-spacing-sm);
+  border-radius: var(--ds-radius-full);
+  @include ds-type(body-sm);
+}
+:host(.ds-badge--neutral) { background: var(--ds-color-bg-neutral); color: var(--ds-color-text-primary); }
+:host(.ds-badge--brand) { background: var(--ds-color-bg-brand-subtle); color: var(--ds-color-text-brand); }
+:host(.ds-badge--success) { background: var(--ds-color-bg-success); color: var(--ds-color-text-success); }
+:host(.ds-badge--danger) { background: var(--ds-color-bg-danger); color: var(--ds-color-text-danger); }

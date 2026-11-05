@@ -1,0 +1,39 @@
+@use 'tokens' as *;
+
+:host { display: inline-flex; }
+
+.ds-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  border-radius: var(--ds-radius-md);
+  cursor: pointer;
+  transition: background-color 120ms ease, border-color 120ms ease;
+
+  &:focus-visible { outline: 2px solid var(--ds-color-bg-brand); outline-offset: 2px; }
+  &:disabled { opacity: 0.5; cursor: not-allowed; }
+}
+
+.ds-button--sm {
+  padding: var(--ds-spacing-xs) var(--ds-spacing-md);
+  @include ds-type(body-sm);
+}
+.ds-button--md {
+  padding: var(--ds-spacing-sm) var(--ds-spacing-lg);
+  @include ds-type(label-md);
+}
+
+.ds-button--primary {
+  background: var(--ds-color-bg-brand);
+  color: var(--ds-color-text-on-brand);
+}
+.ds-button--secondary {
+  background: var(--ds-color-bg-surface);
+  border-color: var(--ds-color-border-default);
+  color: var(--ds-color-text-primary);
+}
+.ds-button--ghost {
+  background: transparent;
+  color: var(--ds-color-text-brand);
+}

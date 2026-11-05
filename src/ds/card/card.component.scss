@@ -1,0 +1,13 @@
+@use 'tokens' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-sm);
+  padding: var(--ds-spacing-xl);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-lg);
+  background: var(--ds-color-bg-surface);
+}
+.ds-card__title { margin: 0; @include ds-type(heading-md); color: var(--ds-color-text-primary); }
+.ds-card__description { margin: 0; @include ds-type(body-md); color: var(--ds-color-text-secondary); }

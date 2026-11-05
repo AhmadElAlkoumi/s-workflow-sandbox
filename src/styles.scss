@@ -1,0 +1,9 @@
+@use 'tokens' as *;
+
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--ds-color-bg-canvas);
+  color: var(--ds-color-text-primary);
+  @include ds-type(body-md);
+}

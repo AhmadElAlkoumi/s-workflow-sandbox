@@ -1,0 +1,33 @@
+{
+  "name": "ds-workflow-sandbox",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sandbox for the designer-to-frontend workflow: shared design system in Figma + Angular, linked with Code Connect.",
+  "scripts": {
+    "tokens": "node scripts/build-tokens.mjs",
+    "check:ds": "node scripts/check-ds-usage.mjs",
+    "start": "npm run tokens && ng serve",
+    "build": "npm run tokens && npm run check:ds && ng build",
+    "figma:publish": "figma connect publish",
+    "figma:parse": "figma connect parse"
+  },
+  "dependencies": {
+    "@angular/common": "^20.0.0",
+    "@angular/compiler": "^20.0.0",
+    "@angular/core": "^20.0.0",
+    "@angular/forms": "^20.0.0",
+    "@angular/platform-browser": "^20.0.0",
+    "@angular/router": "^20.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.6.0",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^20.0.0",
+    "@angular/cli": "^20.0.0",
+    "@angular/compiler-cli": "^20.0.0",
+    "@figma/code-connect": "^1.5.2",
+    "sass": "^1.80.0",
+    "typescript": "~5.8.0"
+  }
+}
