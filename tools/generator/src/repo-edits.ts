@@ -1,5 +1,6 @@
 // Edits to existing repo files. These merge into what is there instead of replacing it,
 // and are idempotent: shipping the same screen again produces the same file.
+import { DYNAMIC_IMPORT } from './names';
 
 export interface RouteEdit {
   feature: string; // team-members
@@ -15,7 +16,7 @@ export function editRoutes(source: string, e: RouteEdit): string {
   const loader = camelCase(e.feature);
   const escaped = (x: string) => x.replace(/[.*+?^${}()|[\]\\/]/g, '\\$&');
 
-  // 1. Mock import (replace a previous one for this feature).
+  // 1. Mock import: replace a previous one for this feature.
   s = s.replace(new RegExp(`import\\s*\\{[^}]*\\}\\s*from\\s*'${escaped(mockPath)}';\\n`), '');
   const names = e.mocks.map(m => m.name).sort();
   const importLine = names.length > 2
@@ -29,7 +30,7 @@ export function editRoutes(source: string, e: RouteEdit): string {
 
   // 2. Lazy loader for the page.
   s = s.replace(new RegExp(`^const ${loader} = .*\\n`, 'm'), '');
-  const loaderLine = `const ${loader} = () => import('${pagePath}').then(m => m.${e.pageClass});\n`;
+  const loaderLine = `const ${loader} = () => ${DYNAMIC_IMPORT}('${pagePath}').then(m => m.${e.pageClass});\n`;
   const exportAt = s.search(/^export const routes/m);
   if (exportAt < 0) throw new Error('app.routes.ts: could not find "export const routes"');
   // Sits right under a comment that introduces the routes; otherwise after a blank line.

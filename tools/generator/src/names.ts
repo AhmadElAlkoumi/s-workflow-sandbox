@@ -48,3 +48,9 @@ export const tsString = (s: string) => "'" + s.replace(/\\/g, '\\\\').replace(/'
 
 /** Escape content placed inside a TypeScript template literal (inline component templates). */
 export const inTemplateLiteral = (s: string) => s.replace(/\\/g, '\\\\').replace(/`/g, '\\`').replace(/\$\{/g, '\\${');
+
+// Figma's plugin sandbox (SES) refuses to load source text that looks like a dynamic import
+// or an HTML comment, even inside a string literal. Generated code needs both, so they are
+// assembled at runtime and never appear literally in the plugin bundle (checked by build.mjs).
+export const DYNAMIC_IMPORT = ['imp', 'ort'].join('');
+export const htmlComment = (text: string) => ['<!', '-- ', text, ' --', '>'].join('');

@@ -1,7 +1,7 @@
 // The deterministic generator: Snapshot → Angular page, Sass, view model, mocks, local
 // components and route edits. Same input, same output: no AI, no randomness, no clock.
 import {
-  camel, constant, escapeAttr, escapeText, humanize, inTemplateLiteral, itemName, kebab, pascal, plural, splitFrameName, tsString,
+  camel, constant, escapeAttr, escapeText, htmlComment, humanize, inTemplateLiteral, itemName, kebab, pascal, plural, splitFrameName, tsString,
 } from './names';
 import { checkReadiness, libraryComponent } from './readiness';
 import { editMain, editRoutes } from './repo-edits';
@@ -312,7 +312,7 @@ function renderNode(n: SNode, parent: SNode, ctx: Ctx, parentRule: Rule): string
   if (n.type === 'INSTANCE') {
     const lib = n.instance ? libraryComponent(ctx.page.mapping, n.instance.key) : undefined;
     if (lib) return renderLibrary(n, lib, parent, ctx);
-    return [`<!-- Skipped "${n.name}": unmapped component -->`];
+    return [htmlComment(`Skipped "${n.name}": unmapped component`)];
   }
   if (CONTAINERS.has(n.type)) return renderContainer(n, parent, ctx);
   if (n.type === 'RECTANGLE') {
@@ -320,7 +320,7 @@ function renderNode(n: SNode, parent: SNode, ctx: Ctx, parentRule: Rule): string
     ctx.rules.push(rule(`.${cls}`, [...boxDecls(n, parent, ctx, false), ...fixedSize(n, ctx, 'shape')]));
     return [`<div class="${cls}" aria-hidden="true"></div>`];
   }
-  return [`<!-- Skipped "${n.name}" (${n.type.toLowerCase()}): not exported yet -->`];
+  return [htmlComment(`Skipped "${n.name}" (${n.type.toLowerCase()}): not exported yet`)];
 }
 
 function tagFor(name: string, mapping: Mapping): { tag: string; cls: string } {
@@ -636,7 +636,7 @@ function dedupeDecls(ds: Decl[]): Decl[] {
 function renderLocalUsage(group: SNode[], parent: SNode, ctx: Ctx): string[] {
   const inst = group[0].instance!;
   const def = ctx.page.snapshot.components[inst.name];
-  if (!def) return [`<!-- Skipped "${inst.name}": component definition not in the selection -->`];
+  if (!def) return [htmlComment(`Skipped "${inst.name}": component definition not in the selection`)];
   const lc = localComponent(def, ctx.page);
   lc.usages.push(...group);
   const data = ctx.data;

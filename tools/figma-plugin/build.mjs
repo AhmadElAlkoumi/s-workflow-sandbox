@@ -33,6 +33,25 @@ const ui = readFileSync(join(here, 'src/ui.html'), 'utf8').replace('__SERVICE_UR
 writeFileSync(join(dist, 'ui.html'), ui);
 // Fail loudly if an output is missing (both files are what Figma loads from manifest.json).
 for (const f of [manifest.main, manifest.ui]) if (!existsSync(join(here, f))) { console.error(`missing ${f}`); process.exit(1); }
+// Figma's plugin sandbox (SES) rejects the whole plugin if its source contains text that looks
+// like a dynamic import or an HTML comment, even inside a string ("possible import expression
+// rejected"). Fail the build instead of shipping a plugin that cannot start.
+const SES_REJECTED = [
+  [/(^|[^.])\bimport\s*(\(|\/[/*])/m, 'dynamic import'],
+  [/<!--|-->/, 'HTML comment'],
+];
+function assertSesSafe(file) {
+  const src = readFileSync(file, 'utf8');
+  for (const [re, what] of SES_REJECTED) {
+    const m = re.exec(src);
+    if (m) {
+      const line = src.slice(0, m.index).split('\n').length;
+      console.error(`${file}:${line}: contains a ${what} pattern that Figma's plugin sandbox rejects.`);
+      process.exit(1);
+    }
+  }
+}
+assertSesSafe(join(dist, 'code.js'));
 console.log(`plugin built → ${dist} (service: ${service || 'none'})`);
 
 // Figma-hosted build (a "generative plugin" in the account library). Figma builds it from a
@@ -79,5 +98,6 @@ if (generativeId) {
   writeFileSync(join(out, 'code.full.ts'), code);
   writeFileSync(join(out, 'code.ts'), lean);
   writeFileSync(join(out, 'ui.html'), readFileSync(join(here, 'src/ui.html'), 'utf8').replace('__SERVICE_URL__', ''));
+  assertSesSafe(join(out, 'code.ts'));
   console.log(`generative build → ${out} (relaunch command ${generativeId})`);
 }
