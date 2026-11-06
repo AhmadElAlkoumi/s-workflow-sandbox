@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<style>
+  :root {
+    --bg: var(--figma-color-bg, #fff);
+    --bg2: var(--figma-color-bg-secondary, #f5f5f5);
+    --bg-hover: var(--figma-color-bg-hover, #f0f0f0);
+    --text: var(--figma-color-text, #1e1e1e);
+    --text2: var(--figma-color-text-secondary, #6b6b6b);
+    --border: var(--figma-color-border, #e6e6e6);
+    --brand: var(--figma-color-bg-brand, #0d99ff);
+    --on-brand: var(--figma-color-text-onbrand, #fff);
+    --danger: var(--figma-color-text-danger, #dc3412);
+    --danger-bg: var(--figma-color-bg-danger-tertiary, #fff1ee);
+    --warn: var(--figma-color-text-warning, #b86200);
+    --warn-bg: var(--figma-color-bg-warning-tertiary, #fff7e6);
+    --ok: var(--figma-color-text-success, #14ae5c);
+    --ok-bg: var(--figma-color-bg-success-tertiary, #ebffee);
+    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { font: 12px/1.45 Inter, system-ui, sans-serif; color: var(--text); background: var(--bg); display: flex; flex-direction: column; }
+  header { padding: 14px 16px 10px; border-bottom: 1px solid var(--border); }
+  h1 { font-size: 14px; font-weight: 600; margin: 0 0 4px; }
+  .meta { color: var(--text2); display: flex; flex-wrap: wrap; gap: 4px 10px; }
+  .chip { display: inline-block; padding: 0 6px; border-radius: 4px; background: var(--bg2); color: var(--text2); font-size: 11px; }
+  nav { display: flex; gap: 2px; padding: 0 12px; border-bottom: 1px solid var(--border); }
+  nav button { all: unset; cursor: pointer; padding: 9px 8px; color: var(--text2); border-bottom: 2px solid transparent; font-weight: 500; }
+  nav button[aria-selected="true"] { color: var(--text); border-color: var(--brand); }
+  nav .count { margin-left: 4px; font-size: 11px; }
+  main { flex: 1; overflow: auto; }
+  section[hidden] { display: none; }
+  .pad { padding: 12px 16px; }
+  .status { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-radius: 6px; margin-bottom: 12px; font-weight: 500; }
+  .status.ok { background: var(--ok-bg); color: var(--ok); }
+  .status.block { background: var(--danger-bg); color: var(--danger); }
+  .status.warn { background: var(--warn-bg); color: var(--warn); }
+  h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .04em; color: var(--text2); margin: 14px 0 6px; font-weight: 600; }
+  ul.issues { list-style: none; margin: 0; padding: 0; }
+  ul.issues li button { all: unset; box-sizing: border-box; display: grid; grid-template-columns: 8px 1fr; gap: 10px; width: 100%; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
+  ul.issues li button:hover, ul.issues li button:focus-visible { background: var(--bg-hover); outline: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; margin-top: 4px; }
+  .dot.block { background: var(--danger); }
+  .dot.warn { background: var(--warn); }
+  .layer { color: var(--text2); font-size: 11px; }
+  .files { display: flex; flex-wrap: wrap; gap: 4px; padding: 10px 16px; border-bottom: 1px solid var(--border); }
+  .files button { all: unset; cursor: pointer; padding: 3px 8px; border-radius: 4px; font-family: var(--mono); font-size: 11px; color: var(--text2); }
+  .files button[aria-selected="true"] { background: var(--bg2); color: var(--text); }
+  .files .edit::after { content: " · edit"; color: var(--warn); }
+  pre { margin: 0; padding: 12px 16px; font: 11px/1.55 var(--mono); white-space: pre; tab-size: 2; }
+  .copybar { display: flex; justify-content: space-between; align-items: center; padding: 8px 16px; border-bottom: 1px solid var(--border); color: var(--text2); }
+  .field { display: grid; gap: 2px; margin-bottom: 12px; }
+  .field .label { color: var(--text2); }
+  .field .value { font-family: var(--mono); }
+  .primary { all: unset; cursor: pointer; text-align: center; padding: 8px 14px; border-radius: 6px; background: var(--brand); color: var(--on-brand); font-weight: 600; }
+  .primary[disabled] { opacity: .4; cursor: not-allowed; }
+  .secondary { all: unset; cursor: pointer; padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border); }
+  .note { color: var(--text2); margin: 10px 0 0; }
+  .empty { padding: 40px 24px; text-align: center; color: var(--text2); }
+  a { color: var(--brand); }
+  footer { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 8px 16px; border-top: 1px solid var(--border); color: var(--text2); }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="title">Ship to Frontend</h1>
+  <div class="meta" id="meta">Select a screen frame, e.g. "Team members / default".</div>
+</header>
+<nav role="tablist">
+  <button role="tab" aria-selected="true" data-tab="check">Check<span class="count" id="count-check"></span></button>
+  <button role="tab" aria-selected="false" data-tab="code">Code<span class="count" id="count-code"></span></button>
+  <button role="tab" aria-selected="false" data-tab="ship">Ship</button>
+</nav>
+<main>
+  <section id="tab-check" class="pad"><div class="empty">Select a frame to check it.</div></section>
+  <section id="tab-code" hidden></section>
+  <section id="tab-ship" class="pad" hidden></section>
+</main>
+<footer>
+  <span id="service">Connecting to the service…</span>
+  <button class="secondary" id="rerun">Re-run</button>
+</footer>
+<script>
+  const SERVICE_URL = '__SERVICE_URL__';
+  const $ = s => document.querySelector(s);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+  const post = msg => parent.postMessage({ pluginMessage: msg }, '*');
+
+  let state = { result: null, meta: null, file: 0, service: 'unknown', context: null, ship: null, contextFor: null };
+
+  // Tabs
+  document.querySelectorAll('nav [data-tab]').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('nav [data-tab]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+    document.querySelectorAll('main > section').forEach(s => (s.hidden = s.id !== 'tab-' + b.dataset.tab));
+  }));
+  $('#rerun').addEventListener('click', () => post({ type: 'rerun' }));
+
+  // Service: repo settings, mapping and the files the generator edits come from the project branch.
+  async function loadContext(feature) {
+    if (!SERVICE_URL || SERVICE_URL.startsWith('__')) { setService('offline', 'No service configured: using the bundled mapping. Push is off.'); return; }
+    try {
+      const r = await fetch(`${SERVICE_URL}/v1/context?feature=${encodeURIComponent(feature)}`);
+      if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || r.statusText);
+      const ctx = await r.json();
+      state.context = ctx;
+      state.contextFor = feature;
+      setService('online', `${ctx.repo} · ${ctx.projectBranchExists ? ctx.projectBranch : ctx.projectBranch + ' (missing)'}`);
+      post({ type: 'repo-context', mapping: ctx.mapping, config: ctx.config, existing: ctx.files });
+    } catch (e) {
+      setService('offline', `Service unreachable (${esc(e.message)}): using the bundled mapping. Push is off.`);
+    }
+  }
+  function setService(status, text) { state.service = status; state.serviceText = text; $('#service').innerHTML = text; renderShip(); }
+
+  window.onmessage = e => {
+    const msg = e.data.pluginMessage;
+    if (!msg) return;
+    if (msg.type === 'empty') {
+      state.result = null;
+      $('#title').textContent = 'Ship to Frontend';
+      $('#meta').textContent = 'Select a screen frame, e.g. "Team members / default".';
+      $('#tab-check').innerHTML = '<div class="empty">Select a frame to check it.</div>';
+      $('#tab-code').innerHTML = '';
+      $('#count-check').textContent = $('#count-code').textContent = '';
+      renderShip();
+    } else if (msg.type === 'error') {
+      $('#tab-check').innerHTML = `<div class="status block">Could not read the frame: ${esc(msg.message)}</div>`;
+    } else if (msg.type === 'result') {
+      const featureChanged = !state.result || state.result.feature !== msg.result.feature;
+      state.result = msg.result;
+      state.meta = msg.meta;
+      if (featureChanged) { state.file = 0; state.ship = null; }
+      render();
+      if (state.contextFor !== msg.result.feature) loadContext(msg.result.feature);
+    }
+  };
+
+  function render() {
+    const { result: r, meta: m } = state;
+    $('#title').textContent = r.featureTitle;
+    $('#meta').innerHTML = [
+      ...r.states.map(s => `<span class="chip">${esc(s)}</span>`),
+      `<span>${m.layers} layers · ${m.ms.read + m.ms.generate} ms</span>`,
+      m.source === 'bundled' ? '<span>bundled mapping</span>' : '<span>repo mapping</span>',
+    ].join('');
+    renderCheck();
+    renderCode();
+    renderShip();
+  }
+
+  function renderCheck() {
+    const r = state.result;
+    const blocks = r.issues.filter(i => i.severity === 'block');
+    const warns = r.issues.filter(i => i.severity === 'warn');
+    $('#count-check').textContent = r.issues.length ? String(r.issues.length) : '';
+    const list = (items, sev) => `<ul class="issues">${items.map(i =>
+      `<li><button data-node="${esc(i.nodeId)}" title="Select this layer"><span class="dot ${sev}"></span><span>${esc(i.message)}<br><span class="layer">${esc(i.nodeName)} · ${esc(i.rule)}</span></span></button></li>`).join('')}</ul>`;
+    const head = blocks.length
+      ? `<div class="status block">${blocks.length} problem${blocks.length > 1 ? 's' : ''} to fix before shipping</div>`
+      : warns.length ? `<div class="status warn">Ready to ship, with ${warns.length} warning${warns.length > 1 ? 's' : ''}</div>`
+      : '<div class="status ok">Ready to ship</div>';
+    $('#tab-check').innerHTML = head
+      + (blocks.length ? '<h2>Blocks the ship</h2>' + list(blocks, 'block') : '')
+      + (warns.length ? '<h2>Warnings (listed in the PR)</h2>' + list(warns, 'warn') : '')
+      + (r.gaps.length ? '<h2>Design system gaps</h2><ul>' + r.gaps.map(g => `<li>${esc(g).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>').replace(/`(.+?)`/g, '<code>$1</code>')}</li>`).join('') + '</ul>' : '');
+    $('#tab-check').querySelectorAll('[data-node]').forEach(b => b.addEventListener('click', () => post({ type: 'select', nodeId: b.dataset.node })));
+  }
+
+  function renderCode() {
+    const r = state.result;
+    $('#count-code').textContent = String(r.files.length);
+    const f = r.files[state.file] || r.files[0];
+    $('#tab-code').innerHTML = `<div class="files" role="tablist">${r.files.map((x, i) =>
+      `<button data-file="${i}" class="${x.mode}" aria-selected="${i === state.file}">${esc(x.path.split('/').pop())}</button>`).join('')}</div>`
+      + `<div class="copybar"><span>${esc(f.path)}</span><button class="secondary" id="copy">Copy</button></div>`
+      + `<pre>${esc(f.content)}</pre>`;
+    $('#tab-code').querySelectorAll('[data-file]').forEach(b => b.addEventListener('click', () => { state.file = Number(b.dataset.file); renderCode(); }));
+    $('#copy').addEventListener('click', () => copy(f.content));
+  }
+
+  function renderShip() {
+    const el = $('#tab-ship');
+    const r = state.result;
+    if (!r) { el.innerHTML = '<div class="empty">Select a frame first.</div>'; return; }
+    const ctx = state.context;
+    const blocked = r.blocked;
+    const online = state.service === 'online';
+    const missingBase = ctx && !ctx.projectBranchExists;
+    const why = blocked ? 'Fix the problems in Check first.'
+      : !online ? (state.serviceText || 'Connecting to the service…')
+      : missingBase ? `${esc(r.projectBranch)} does not exist yet. Ask frontend to create it.`
+      : !state.meta.user ? 'Figma did not share who you are; reopen the plugin.' : '';
+    const done = state.ship && state.ship.ok;
+    el.innerHTML = `
+      <div class="field"><span class="label">Commits to</span><span class="value">${esc(r.designBranch)}</span></div>
+      <div class="field"><span class="label">Pull request into</span><span class="value">${esc(r.projectBranch)}</span></div>
+      <div class="field"><span class="label">Files</span><span>${r.files.filter(f => f.mode === 'create').length} new, ${r.files.filter(f => f.mode === 'edit').length} edited · routes ${r.routes.map(esc).join(', ')}</span></div>
+      <button class="primary" id="push" ${why || state.ship?.pending ? 'disabled' : ''}>${state.ship?.pending ? 'Pushing…' : done ? 'Push again' : 'Push to GitHub'}</button>
+      ${why ? `<p class="note">${why}</p>` : ''}
+      ${state.ship?.ok ? `<p class="note">${state.ship.created ? 'Opened' : 'Updated'} <a href="${esc(state.ship.prUrl)}" target="_blank" rel="noopener">pull request #${state.ship.prNumber}</a> · commit ${esc(state.ship.commit.slice(0, 7))}${state.ship.unchanged ? ' (no changes since the last push)' : ''}</p>` : ''}
+      ${state.ship?.error ? `<div class="status block">${esc(state.ship.error)}</div>` : ''}
+      <p class="note">One commit on ${esc(r.designBranch)}, never on main and never forced. Pushing again updates the same branch and pull request.</p>`;
+    const btn = $('#push');
+    if (btn) btn.addEventListener('click', push);
+  }
+
+  // Plugin iframes often block navigator.clipboard, so fall back to a hidden textarea.
+  function copy(text) {
+    const done = () => { $('#copy').textContent = 'Copied'; setTimeout(() => { const b = $('#copy'); if (b) b.textContent = 'Copy'; }, 1500); };
+    const fallback = () => {
+      const t = document.createElement('textarea');
+      t.value = text; t.style.position = 'fixed'; t.style.opacity = '0';
+      document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); done(); } catch { post({ type: 'notify', text: 'Could not copy; select the code and copy it by hand.' }); }
+      t.remove();
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback);
+    else fallback();
+  }
+
+  async function push() {
+    const r = state.result;
+    state.ship = { pending: true };
+    renderShip();
+    try {
+      const res = await fetch(`${SERVICE_URL}/v1/ship`, {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({
+          figmaUserId: state.meta.user.id,
+          figmaUserName: state.meta.user.name,
+          fileKey: state.meta.fileKey,
+          frames: state.meta.frames,
+          feature: r.feature,
+          designBranch: r.designBranch,
+          projectBranch: r.projectBranch,
+          files: r.files.map(f => ({ path: f.path, content: f.content })),
+          prTitle: r.prTitle,
+          prBody: r.prBody,
+        }),
+      });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || res.statusText);
+      state.ship = { ok: true, ...body };
+      post({ type: 'notify', text: `Pushed to ${r.designBranch}` });
+    } catch (e) {
+      state.ship = { error: e.message };
+    }
+    renderShip();
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+{
+  "$description": "Figma → Angular mapping used by the Ship to Frontend generator. Code is the source of truth: every input named here must exist on the Angular component (CI: npm run check:mapping). Instances are matched by component (set) key, so this works from any file that uses the published library.",
+  "library": {
+    "fileKey": "n7GpHuPLWNrhdqkyGQrRDX",
+    "import": "@ds/ui"
+  },
+  "components": {
+    "Button": {
+      "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+      "nodeId": "2:60",
+      "selector": "ds-button",
+      "className": "DsButtonComponent",
+      "source": "src/ds/button/button.component.ts",
+      "props": {
+        "variant": { "input": "variant", "type": "DsButtonVariant" },
+        "size": { "input": "size", "type": "DsButtonSize" },
+        "label": { "content": true }
+      },
+      "event": "pressed",
+      "submit": { "input": "type", "value": "submit" }
+    },
+    "Input": {
+      "key": "0f62b4e99e59e014d3a73e42942df69044bec99c",
+      "nodeId": "2:71",
+      "selector": "ds-input",
+      "className": "DsInputComponent",
+      "source": "src/ds/input/input.component.ts",
+      "props": {
+        "label": { "input": "label" },
+        "placeholder": { "input": "placeholder" },
+        "hint": { "input": "hint" },
+        "state": { "input": "state", "type": "DsInputState" }
+      },
+      "model": "value",
+      "typeInput": "type",
+      "selfClosing": true
+    },
+    "Badge": {
+      "key": "af4bc36bc5fdb7bacde7520bc3f85423d645f2ef",
+      "nodeId": "2:80",
+      "selector": "ds-badge",
+      "className": "DsBadgeComponent",
+      "source": "src/ds/badge/badge.component.ts",
+      "props": {
+        "tone": { "input": "tone", "type": "DsBadgeTone" },
+        "label": { "content": true }
+      }
+    },
+    "Card": {
+      "key": "ede5d458f562e314b60bc2a5db70ceefc656ab3b",
+      "nodeId": "2:81",
+      "selector": "ds-card",
+      "className": "DsCardComponent",
+      "source": "src/ds/card/card.component.ts",
+      "props": {
+        "title": { "input": "title" },
+        "description": { "input": "description" }
+      },
+      "selfClosing": true
+    }
+  },
+  "textStyles": {
+    "heading/lg": { "tag": "h1", "type": "heading-lg" },
+    "heading/md": { "tag": "h2", "type": "heading-md" },
+    "body/md": { "tag": "p", "type": "body-md" },
+    "body/sm": { "tag": "span", "type": "body-sm" },
+    "label/md": { "tag": "span", "type": "label-md" }
+  },
+  "layerNames": {
+    "header": "header",
+    "footer": "footer",
+    "nav": "nav",
+    "main": "main",
+    "aside": "aside",
+    "section": "section",
+    "*-form": "form",
+    "*-list": "section",
+    "*-section": "section"
+  }
+}

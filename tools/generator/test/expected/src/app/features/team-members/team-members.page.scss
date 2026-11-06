@@ -1,0 +1,41 @@
+@use 'tokens' as *;
+
+:host {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-xl);
+  max-width: 1200px; // ds-allow: page max width (no layout token yet, see PR "Design system gaps")
+  margin: 0 auto;
+  padding: var(--ds-spacing-2xl);
+}
+
+.header { display: flex; align-items: center; justify-content: space-between; }
+
+.title {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ds-spacing-xs);
+
+  h1 { margin: 0; @include ds-type(heading-lg); color: var(--ds-color-text-primary); }
+  p { margin: 0; @include ds-type(body-md); color: var(--ds-color-text-secondary); }
+}
+
+.stats {
+  display: flex;
+  gap: var(--ds-spacing-lg);
+
+  > * { flex: 1; min-width: 0; }
+}
+
+.invite { display: flex; align-items: flex-end; gap: var(--ds-spacing-md); }
+
+.invite__email { flex: 1; min-width: 0; }
+
+.members {
+  display: flex;
+  flex-direction: column;
+  background: var(--ds-color-bg-surface);
+  border: 1px solid var(--ds-color-border-default);
+  border-radius: var(--ds-radius-lg);
+  overflow: hidden;
+}

@@ -1,0 +1,17 @@
+{
+  "$description": "Ship to Frontend project settings. The plugin and service read this from the repo.",
+  "figmaFileKey": "n7GpHuPLWNrhdqkyGQrRDX",
+  "projectBranch": "feature/{feature}",
+  "designBranch": "design/{feature}",
+  "paths": {
+    "features": "src/app/features",
+    "routes": "src/app/app.routes.ts",
+    "main": "src/main.ts"
+  },
+  "naming": {
+    "pageSelectorPrefix": "app",
+    "templates": "inline"
+  },
+  "canvasToken": "color/bg/canvas",
+  "requiredStates": ["empty", "loading", "error"]
+}

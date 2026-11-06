@@ -1,0 +1,2199 @@
+{
+ "fileKey": "n7GpHuPLWNrhdqkyGQrRDX",
+ "fileName": "Document",
+ "pageName": "Screens",
+ "frames": [
+  {
+   "id": "4:11",
+   "type": "FRAME",
+   "name": "Team members / default",
+   "visible": true,
+   "width": 1200,
+   "height": 666,
+   "sizing": {
+    "h": "FIXED",
+    "v": "HUG"
+   },
+   "absolute": false,
+   "fills": [
+    {
+     "type": "SOLID",
+     "variable": "color/bg/canvas",
+     "hex": "#F8FAFC"
+    }
+   ],
+   "strokes": [],
+   "clips": true,
+   "layout": {
+    "mode": "VERTICAL",
+    "gap": {
+     "value": 24,
+     "variable": "spacing/xl"
+    },
+    "padding": [
+     {
+      "value": 32,
+      "variable": "spacing/2xl"
+     },
+     {
+      "value": 32,
+      "variable": "spacing/2xl"
+     },
+     {
+      "value": 32,
+      "variable": "spacing/2xl"
+     },
+     {
+      "value": 32,
+      "variable": "spacing/2xl"
+     }
+    ],
+    "wrap": false,
+    "main": "MIN",
+    "cross": "MIN"
+   },
+   "children": [
+    {
+     "id": "4:12",
+     "type": "FRAME",
+     "name": "header",
+     "visible": true,
+     "width": 1136,
+     "height": 56,
+     "sizing": {
+      "h": "FILL",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [],
+     "strokes": [],
+     "clips": true,
+     "layout": {
+      "mode": "HORIZONTAL",
+      "gap": {
+       "value": 0
+      },
+      "padding": [
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       }
+      ],
+      "wrap": false,
+      "main": "SPACE_BETWEEN",
+      "cross": "CENTER"
+     },
+     "children": [
+      {
+       "id": "4:13",
+       "type": "FRAME",
+       "name": "title",
+       "visible": true,
+       "width": 327,
+       "height": 56,
+       "sizing": {
+        "h": "HUG",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": true,
+       "layout": {
+        "mode": "VERTICAL",
+        "gap": {
+         "value": 4,
+         "variable": "spacing/xs"
+        },
+        "padding": [
+         {
+          "value": 0
+         },
+         {
+          "value": 0
+         },
+         {
+          "value": 0
+         },
+         {
+          "value": 0
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "MIN"
+       },
+       "children": [
+        {
+         "id": "4:14",
+         "type": "TEXT",
+         "name": "heading",
+         "visible": true,
+         "width": 179,
+         "height": 32,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [
+          {
+           "type": "SOLID",
+           "variable": "color/text/primary",
+           "hex": "#0F172A"
+          }
+         ],
+         "strokes": [],
+         "clips": false,
+         "text": {
+          "characters": "Team members",
+          "style": "heading/lg",
+          "fill": {
+           "type": "SOLID",
+           "variable": "color/text/primary",
+           "hex": "#0F172A"
+          },
+          "truncate": false
+         }
+        },
+        {
+         "id": "4:15",
+         "type": "TEXT",
+         "name": "subheading",
+         "visible": true,
+         "width": 327,
+         "height": 20,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [
+          {
+           "type": "SOLID",
+           "variable": "color/text/secondary",
+           "hex": "#64748B"
+          }
+         ],
+         "strokes": [],
+         "clips": false,
+         "text": {
+          "characters": "Manage who has access to the Acme workspace.",
+          "style": "body/md",
+          "fill": {
+           "type": "SOLID",
+           "variable": "color/text/secondary",
+           "hex": "#64748B"
+          },
+          "truncate": false
+         }
+        }
+       ]
+      },
+      {
+       "id": "4:16",
+       "type": "INSTANCE",
+       "name": "Button",
+       "visible": true,
+       "width": 128,
+       "height": 36,
+       "sizing": {
+        "h": "HUG",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "HORIZONTAL",
+        "gap": {
+         "value": 0
+        },
+        "padding": [
+         {
+          "value": 8,
+          "variable": "spacing/sm"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 8,
+          "variable": "spacing/sm"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         }
+        ],
+        "wrap": false,
+        "main": "CENTER",
+        "cross": "CENTER"
+       },
+       "radius": {
+        "value": 8,
+        "variable": "radius/md"
+       },
+       "instance": {
+        "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+        "name": "Button",
+        "mainId": "2:60",
+        "remote": false,
+        "variant": {
+         "variant": "primary",
+         "size": "md"
+        },
+        "text": {
+         "label": "Invite member"
+        },
+        "textDefaults": {
+         "label": "Button"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "4:18",
+     "type": "FRAME",
+     "name": "stats",
+     "visible": true,
+     "width": 1136,
+     "height": 104,
+     "sizing": {
+      "h": "FILL",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [],
+     "strokes": [],
+     "clips": true,
+     "layout": {
+      "mode": "HORIZONTAL",
+      "gap": {
+       "value": 16,
+       "variable": "spacing/lg"
+      },
+      "padding": [
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       }
+      ],
+      "wrap": false,
+      "main": "MIN",
+      "cross": "MIN"
+     },
+     "children": [
+      {
+       "id": "4:19",
+       "type": "INSTANCE",
+       "name": "Card",
+       "visible": true,
+       "width": 368,
+       "height": 104,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "VERTICAL",
+        "gap": {
+         "value": 8,
+         "variable": "spacing/sm"
+        },
+        "padding": [
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "MIN"
+       },
+       "radius": {
+        "value": 12,
+        "variable": "radius/lg"
+       },
+       "instance": {
+        "key": "ede5d458f562e314b60bc2a5db70ceefc656ab3b",
+        "name": "Card",
+        "mainId": "2:81",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "description": "Members with access today",
+         "title": "12 active"
+        },
+        "textDefaults": {
+         "title": "Card title",
+         "description": "Supporting text that explains the card content."
+        }
+       }
+      },
+      {
+       "id": "4:22",
+       "type": "INSTANCE",
+       "name": "Card",
+       "visible": true,
+       "width": 368,
+       "height": 104,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "VERTICAL",
+        "gap": {
+         "value": 8,
+         "variable": "spacing/sm"
+        },
+        "padding": [
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "MIN"
+       },
+       "radius": {
+        "value": 12,
+        "variable": "radius/lg"
+       },
+       "instance": {
+        "key": "ede5d458f562e314b60bc2a5db70ceefc656ab3b",
+        "name": "Card",
+        "mainId": "2:81",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "description": "Invites waiting for a response",
+         "title": "3 pending"
+        },
+        "textDefaults": {
+         "title": "Card title",
+         "description": "Supporting text that explains the card content."
+        }
+       }
+      },
+      {
+       "id": "4:25",
+       "type": "INSTANCE",
+       "name": "Card",
+       "visible": true,
+       "width": 368,
+       "height": 104,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "VERTICAL",
+        "gap": {
+         "value": 8,
+         "variable": "spacing/sm"
+        },
+        "padding": [
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         },
+         {
+          "value": 24,
+          "variable": "spacing/xl"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "MIN"
+       },
+       "radius": {
+        "value": 12,
+        "variable": "radius/lg"
+       },
+       "instance": {
+        "key": "ede5d458f562e314b60bc2a5db70ceefc656ab3b",
+        "name": "Card",
+        "mainId": "2:81",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "description": "Access paused by an admin",
+         "title": "1 suspended"
+        },
+        "textDefaults": {
+         "title": "Card title",
+         "description": "Supporting text that explains the card content."
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "4:28",
+     "type": "FRAME",
+     "name": "invite-form",
+     "visible": true,
+     "width": 1136,
+     "height": 84,
+     "sizing": {
+      "h": "FILL",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [],
+     "strokes": [],
+     "clips": true,
+     "layout": {
+      "mode": "HORIZONTAL",
+      "gap": {
+       "value": 12,
+       "variable": "spacing/md"
+      },
+      "padding": [
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       }
+      ],
+      "wrap": false,
+      "main": "MIN",
+      "cross": "MAX"
+     },
+     "children": [
+      {
+       "id": "4:29",
+       "type": "INSTANCE",
+       "name": "Input",
+       "visible": true,
+       "width": 1015,
+       "height": 84,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "VERTICAL",
+        "gap": {
+         "value": 4,
+         "variable": "spacing/xs"
+        },
+        "padding": [
+         {
+          "value": 0
+         },
+         {
+          "value": 0
+         },
+         {
+          "value": 0
+         },
+         {
+          "value": 0
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "MIN"
+       },
+       "instance": {
+        "key": "0f62b4e99e59e014d3a73e42942df69044bec99c",
+        "name": "Input",
+        "mainId": "2:71",
+        "remote": false,
+        "variant": {
+         "state": "default"
+        },
+        "text": {
+         "hint": "They will get an email with a link to join.",
+         "placeholder": "teammate@acme.io",
+         "label": "Invite by email"
+        },
+        "textDefaults": {
+         "label": "Label",
+         "placeholder": "Placeholder",
+         "hint": "Helper text"
+        }
+       }
+      },
+      {
+       "id": "4:34",
+       "type": "INSTANCE",
+       "name": "Button",
+       "visible": true,
+       "width": 109,
+       "height": 38,
+       "sizing": {
+        "h": "HUG",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "HORIZONTAL",
+        "gap": {
+         "value": 0
+        },
+        "padding": [
+         {
+          "value": 8,
+          "variable": "spacing/sm"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 8,
+          "variable": "spacing/sm"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         }
+        ],
+        "wrap": false,
+        "main": "CENTER",
+        "cross": "CENTER"
+       },
+       "radius": {
+        "value": 8,
+        "variable": "radius/md"
+       },
+       "instance": {
+        "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+        "name": "Button",
+        "mainId": "2:60",
+        "remote": false,
+        "variant": {
+         "variant": "secondary",
+         "size": "md"
+        },
+        "text": {
+         "label": "Send invite"
+        },
+        "textDefaults": {
+         "label": "Button"
+        }
+       }
+      }
+     ]
+    },
+    {
+     "id": "4:36",
+     "type": "FRAME",
+     "name": "members-list",
+     "visible": true,
+     "width": 1136,
+     "height": 286,
+     "sizing": {
+      "h": "FILL",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [
+      {
+       "type": "SOLID",
+       "variable": "color/bg/surface",
+       "hex": "#FFFFFF"
+      }
+     ],
+     "strokes": [
+      {
+       "type": "SOLID",
+       "variable": "color/border/default",
+       "hex": "#E2E8F0"
+      }
+     ],
+     "clips": true,
+     "layout": {
+      "mode": "VERTICAL",
+      "gap": {
+       "value": 0
+      },
+      "padding": [
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       }
+      ],
+      "wrap": false,
+      "main": "MIN",
+      "cross": "MIN"
+     },
+     "strokeWeights": [
+      1,
+      1,
+      1,
+      1
+     ],
+     "radius": {
+      "value": 12,
+      "variable": "radius/lg"
+     },
+     "children": [
+      {
+       "id": "4:37",
+       "type": "INSTANCE",
+       "name": "_MemberRow",
+       "visible": true,
+       "width": 1134,
+       "height": 71,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "HORIZONTAL",
+        "gap": {
+         "value": 16,
+         "variable": "spacing/lg"
+        },
+        "padding": [
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "CENTER"
+       },
+       "instance": {
+        "key": "94fc1a5b5951a60d6dba8d2fa94d00475b04e8a0",
+        "name": "_MemberRow",
+        "mainId": "4:3",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "email": "lina@acme.io",
+         "name": "Lina Haddad"
+        },
+        "textDefaults": {
+         "name": "Name",
+         "email": "name@company.com"
+        }
+       },
+       "children": [
+        {
+         "id": "I4:37;4:4",
+         "type": "FRAME",
+         "name": "who",
+         "visible": true,
+         "width": 941,
+         "height": 38,
+         "sizing": {
+          "h": "FILL",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": true,
+         "layout": {
+          "mode": "VERTICAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "children": [
+          {
+           "id": "I4:37;4:5",
+           "type": "TEXT",
+           "name": "name",
+           "visible": true,
+           "width": 85,
+           "height": 20,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "Lina Haddad",
+            "style": "label/md",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            },
+            "truncate": false
+           }
+          },
+          {
+           "id": "I4:37;4:6",
+           "type": "TEXT",
+           "name": "email",
+           "visible": true,
+           "width": 82,
+           "height": 18,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "lina@acme.io",
+            "style": "body/sm",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            },
+            "truncate": false
+           }
+          }
+         ]
+        },
+        {
+         "id": "I4:37;4:7",
+         "type": "INSTANCE",
+         "name": "Badge",
+         "visible": true,
+         "width": 55,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "radius": {
+          "value": 999,
+          "variable": "radius/full"
+         },
+         "instance": {
+          "key": "af4bc36bc5fdb7bacde7520bc3f85423d645f2ef",
+          "name": "Badge",
+          "mainId": "2:80",
+          "remote": false,
+          "variant": {
+           "tone": "success"
+          },
+          "text": {
+           "label": "Active"
+          },
+          "textDefaults": {
+           "label": "Badge"
+          }
+         }
+        },
+        {
+         "id": "I4:37;4:9",
+         "type": "INSTANCE",
+         "name": "Button",
+         "visible": true,
+         "width": 74,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           }
+          ],
+          "wrap": false,
+          "main": "CENTER",
+          "cross": "CENTER"
+         },
+         "radius": {
+          "value": 8,
+          "variable": "radius/md"
+         },
+         "instance": {
+          "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+          "name": "Button",
+          "mainId": "2:60",
+          "remote": false,
+          "variant": {
+           "variant": "ghost",
+           "size": "sm"
+          },
+          "text": {
+           "label": "Manage"
+          },
+          "textDefaults": {
+           "label": "Button"
+          }
+         }
+        }
+       ]
+      },
+      {
+       "id": "4:45",
+       "type": "INSTANCE",
+       "name": "_MemberRow",
+       "visible": true,
+       "width": 1134,
+       "height": 71,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "HORIZONTAL",
+        "gap": {
+         "value": 16,
+         "variable": "spacing/lg"
+        },
+        "padding": [
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "CENTER"
+       },
+       "instance": {
+        "key": "94fc1a5b5951a60d6dba8d2fa94d00475b04e8a0",
+        "name": "_MemberRow",
+        "mainId": "4:3",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "email": "omar@acme.io",
+         "name": "Omar Khalil"
+        },
+        "textDefaults": {
+         "name": "Name",
+         "email": "name@company.com"
+        }
+       },
+       "children": [
+        {
+         "id": "I4:45;4:4",
+         "type": "FRAME",
+         "name": "who",
+         "visible": true,
+         "width": 941,
+         "height": 38,
+         "sizing": {
+          "h": "FILL",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": true,
+         "layout": {
+          "mode": "VERTICAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "children": [
+          {
+           "id": "I4:45;4:5",
+           "type": "TEXT",
+           "name": "name",
+           "visible": true,
+           "width": 77,
+           "height": 20,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "Omar Khalil",
+            "style": "label/md",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            },
+            "truncate": false
+           }
+          },
+          {
+           "id": "I4:45;4:6",
+           "type": "TEXT",
+           "name": "email",
+           "visible": true,
+           "width": 92,
+           "height": 18,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "omar@acme.io",
+            "style": "body/sm",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            },
+            "truncate": false
+           }
+          }
+         ]
+        },
+        {
+         "id": "I4:45;4:7",
+         "type": "INSTANCE",
+         "name": "Badge",
+         "visible": true,
+         "width": 55,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "radius": {
+          "value": 999,
+          "variable": "radius/full"
+         },
+         "instance": {
+          "key": "af4bc36bc5fdb7bacde7520bc3f85423d645f2ef",
+          "name": "Badge",
+          "mainId": "2:80",
+          "remote": false,
+          "variant": {
+           "tone": "success"
+          },
+          "text": {
+           "label": "Active"
+          },
+          "textDefaults": {
+           "label": "Badge"
+          }
+         }
+        },
+        {
+         "id": "I4:45;4:9",
+         "type": "INSTANCE",
+         "name": "Button",
+         "visible": true,
+         "width": 74,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           }
+          ],
+          "wrap": false,
+          "main": "CENTER",
+          "cross": "CENTER"
+         },
+         "radius": {
+          "value": 8,
+          "variable": "radius/md"
+         },
+         "instance": {
+          "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+          "name": "Button",
+          "mainId": "2:60",
+          "remote": false,
+          "variant": {
+           "variant": "ghost",
+           "size": "sm"
+          },
+          "text": {
+           "label": "Manage"
+          },
+          "textDefaults": {
+           "label": "Button"
+          }
+         }
+        }
+       ]
+      },
+      {
+       "id": "4:53",
+       "type": "INSTANCE",
+       "name": "_MemberRow",
+       "visible": true,
+       "width": 1134,
+       "height": 71,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "HORIZONTAL",
+        "gap": {
+         "value": 16,
+         "variable": "spacing/lg"
+        },
+        "padding": [
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "CENTER"
+       },
+       "instance": {
+        "key": "94fc1a5b5951a60d6dba8d2fa94d00475b04e8a0",
+        "name": "_MemberRow",
+        "mainId": "4:3",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "email": "sara@acme.io",
+         "name": "Sara Nasser"
+        },
+        "textDefaults": {
+         "name": "Name",
+         "email": "name@company.com"
+        }
+       },
+       "children": [
+        {
+         "id": "I4:53;4:4",
+         "type": "FRAME",
+         "name": "who",
+         "visible": true,
+         "width": 938,
+         "height": 38,
+         "sizing": {
+          "h": "FILL",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": true,
+         "layout": {
+          "mode": "VERTICAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "children": [
+          {
+           "id": "I4:53;4:5",
+           "type": "TEXT",
+           "name": "name",
+           "visible": true,
+           "width": 81,
+           "height": 20,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "Sara Nasser",
+            "style": "label/md",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            },
+            "truncate": false
+           }
+          },
+          {
+           "id": "I4:53;4:6",
+           "type": "TEXT",
+           "name": "email",
+           "visible": true,
+           "width": 87,
+           "height": 18,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "sara@acme.io",
+            "style": "body/sm",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            },
+            "truncate": false
+           }
+          }
+         ]
+        },
+        {
+         "id": "I4:53;4:7",
+         "type": "INSTANCE",
+         "name": "Badge",
+         "visible": true,
+         "width": 58,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "radius": {
+          "value": 999,
+          "variable": "radius/full"
+         },
+         "instance": {
+          "key": "af4bc36bc5fdb7bacde7520bc3f85423d645f2ef",
+          "name": "Badge",
+          "mainId": "2:80",
+          "remote": false,
+          "variant": {
+           "tone": "brand"
+          },
+          "text": {
+           "label": "Invited"
+          },
+          "textDefaults": {
+           "label": "Badge"
+          }
+         }
+        },
+        {
+         "id": "I4:53;4:9",
+         "type": "INSTANCE",
+         "name": "Button",
+         "visible": true,
+         "width": 74,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           }
+          ],
+          "wrap": false,
+          "main": "CENTER",
+          "cross": "CENTER"
+         },
+         "radius": {
+          "value": 8,
+          "variable": "radius/md"
+         },
+         "instance": {
+          "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+          "name": "Button",
+          "mainId": "2:60",
+          "remote": false,
+          "variant": {
+           "variant": "ghost",
+           "size": "sm"
+          },
+          "text": {
+           "label": "Manage"
+          },
+          "textDefaults": {
+           "label": "Button"
+          }
+         }
+        }
+       ]
+      },
+      {
+       "id": "4:62",
+       "type": "INSTANCE",
+       "name": "_MemberRow",
+       "visible": true,
+       "width": 1134,
+       "height": 71,
+       "sizing": {
+        "h": "FILL",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [],
+       "strokes": [],
+       "clips": false,
+       "layout": {
+        "mode": "HORIZONTAL",
+        "gap": {
+         "value": 16,
+         "variable": "spacing/lg"
+        },
+        "padding": [
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         },
+         {
+          "value": 16,
+          "variable": "spacing/lg"
+         }
+        ],
+        "wrap": false,
+        "main": "MIN",
+        "cross": "CENTER"
+       },
+       "instance": {
+        "key": "94fc1a5b5951a60d6dba8d2fa94d00475b04e8a0",
+        "name": "_MemberRow",
+        "mainId": "4:3",
+        "remote": false,
+        "variant": {},
+        "text": {
+         "email": "yousef@acme.io",
+         "name": "Yousef Ali"
+        },
+        "textDefaults": {
+         "name": "Name",
+         "email": "name@company.com"
+        }
+       },
+       "children": [
+        {
+         "id": "I4:62;4:4",
+         "type": "FRAME",
+         "name": "who",
+         "visible": true,
+         "width": 910,
+         "height": 38,
+         "sizing": {
+          "h": "FILL",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": true,
+         "layout": {
+          "mode": "VERTICAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           },
+           {
+            "value": 0
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "children": [
+          {
+           "id": "I4:62;4:5",
+           "type": "TEXT",
+           "name": "name",
+           "visible": true,
+           "width": 67,
+           "height": 20,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "Yousef Ali",
+            "style": "label/md",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/primary",
+             "hex": "#0F172A"
+            },
+            "truncate": false
+           }
+          },
+          {
+           "id": "I4:62;4:6",
+           "type": "TEXT",
+           "name": "email",
+           "visible": true,
+           "width": 102,
+           "height": 18,
+           "sizing": {
+            "h": "HUG",
+            "v": "HUG"
+           },
+           "absolute": false,
+           "fills": [
+            {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            }
+           ],
+           "strokes": [],
+           "clips": false,
+           "text": {
+            "characters": "yousef@acme.io",
+            "style": "body/sm",
+            "fill": {
+             "type": "SOLID",
+             "variable": "color/text/secondary",
+             "hex": "#64748B"
+            },
+            "truncate": false
+           }
+          }
+         ]
+        },
+        {
+         "id": "I4:62;4:7",
+         "type": "INSTANCE",
+         "name": "Badge",
+         "visible": true,
+         "width": 86,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 8,
+            "variable": "spacing/sm"
+           }
+          ],
+          "wrap": false,
+          "main": "MIN",
+          "cross": "MIN"
+         },
+         "radius": {
+          "value": 999,
+          "variable": "radius/full"
+         },
+         "instance": {
+          "key": "af4bc36bc5fdb7bacde7520bc3f85423d645f2ef",
+          "name": "Badge",
+          "mainId": "2:80",
+          "remote": false,
+          "variant": {
+           "tone": "danger"
+          },
+          "text": {
+           "label": "Suspended"
+          },
+          "textDefaults": {
+           "label": "Badge"
+          }
+         }
+        },
+        {
+         "id": "I4:62;4:9",
+         "type": "INSTANCE",
+         "name": "Button",
+         "visible": true,
+         "width": 74,
+         "height": 26,
+         "sizing": {
+          "h": "HUG",
+          "v": "HUG"
+         },
+         "absolute": false,
+         "fills": [],
+         "strokes": [],
+         "clips": false,
+         "layout": {
+          "mode": "HORIZONTAL",
+          "gap": {
+           "value": 0
+          },
+          "padding": [
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           },
+           {
+            "value": 4,
+            "variable": "spacing/xs"
+           },
+           {
+            "value": 12,
+            "variable": "spacing/md"
+           }
+          ],
+          "wrap": false,
+          "main": "CENTER",
+          "cross": "CENTER"
+         },
+         "radius": {
+          "value": 8,
+          "variable": "radius/md"
+         },
+         "instance": {
+          "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+          "name": "Button",
+          "mainId": "2:60",
+          "remote": false,
+          "variant": {
+           "variant": "ghost",
+           "size": "sm"
+          },
+          "text": {
+           "label": "Manage"
+          },
+          "textDefaults": {
+           "label": "Button"
+          }
+         }
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "components": {
+  "_MemberRow": {
+   "id": "4:3",
+   "type": "COMPONENT",
+   "name": "_MemberRow",
+   "visible": true,
+   "width": 1072,
+   "height": 71,
+   "sizing": {
+    "h": "FIXED",
+    "v": "HUG"
+   },
+   "absolute": false,
+   "fills": [],
+   "strokes": [
+    {
+     "type": "SOLID",
+     "variable": "color/border/default",
+     "hex": "#E2E8F0"
+    }
+   ],
+   "clips": false,
+   "layout": {
+    "mode": "HORIZONTAL",
+    "gap": {
+     "value": 16,
+     "variable": "spacing/lg"
+    },
+    "padding": [
+     {
+      "value": 16,
+      "variable": "spacing/lg"
+     },
+     {
+      "value": 16,
+      "variable": "spacing/lg"
+     },
+     {
+      "value": 16,
+      "variable": "spacing/lg"
+     },
+     {
+      "value": 16,
+      "variable": "spacing/lg"
+     }
+    ],
+    "wrap": false,
+    "main": "MIN",
+    "cross": "CENTER"
+   },
+   "strokeWeights": [
+    0,
+    0,
+    1,
+    0
+   ],
+   "children": [
+    {
+     "id": "4:4",
+     "type": "FRAME",
+     "name": "who",
+     "visible": true,
+     "width": 878,
+     "height": 38,
+     "sizing": {
+      "h": "FILL",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [],
+     "strokes": [],
+     "clips": true,
+     "layout": {
+      "mode": "VERTICAL",
+      "gap": {
+       "value": 0
+      },
+      "padding": [
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       },
+       {
+        "value": 0
+       }
+      ],
+      "wrap": false,
+      "main": "MIN",
+      "cross": "MIN"
+     },
+     "children": [
+      {
+       "id": "4:5",
+       "type": "TEXT",
+       "name": "name",
+       "visible": true,
+       "width": 40,
+       "height": 20,
+       "sizing": {
+        "h": "HUG",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [
+        {
+         "type": "SOLID",
+         "variable": "color/text/primary",
+         "hex": "#0F172A"
+        }
+       ],
+       "strokes": [],
+       "clips": false,
+       "text": {
+        "characters": "Name",
+        "style": "label/md",
+        "fill": {
+         "type": "SOLID",
+         "variable": "color/text/primary",
+         "hex": "#0F172A"
+        },
+        "truncate": false,
+        "prop": "name"
+       }
+      },
+      {
+       "id": "4:6",
+       "type": "TEXT",
+       "name": "email",
+       "visible": true,
+       "width": 132,
+       "height": 18,
+       "sizing": {
+        "h": "HUG",
+        "v": "HUG"
+       },
+       "absolute": false,
+       "fills": [
+        {
+         "type": "SOLID",
+         "variable": "color/text/secondary",
+         "hex": "#64748B"
+        }
+       ],
+       "strokes": [],
+       "clips": false,
+       "text": {
+        "characters": "name@company.com",
+        "style": "body/sm",
+        "fill": {
+         "type": "SOLID",
+         "variable": "color/text/secondary",
+         "hex": "#64748B"
+        },
+        "truncate": false,
+        "prop": "email"
+       }
+      }
+     ]
+    },
+    {
+     "id": "4:7",
+     "type": "INSTANCE",
+     "name": "Badge",
+     "visible": true,
+     "width": 56,
+     "height": 26,
+     "sizing": {
+      "h": "HUG",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [],
+     "strokes": [],
+     "clips": false,
+     "layout": {
+      "mode": "HORIZONTAL",
+      "gap": {
+       "value": 0
+      },
+      "padding": [
+       {
+        "value": 4,
+        "variable": "spacing/xs"
+       },
+       {
+        "value": 8,
+        "variable": "spacing/sm"
+       },
+       {
+        "value": 4,
+        "variable": "spacing/xs"
+       },
+       {
+        "value": 8,
+        "variable": "spacing/sm"
+       }
+      ],
+      "wrap": false,
+      "main": "MIN",
+      "cross": "MIN"
+     },
+     "radius": {
+      "value": 999,
+      "variable": "radius/full"
+     },
+     "instance": {
+      "key": "af4bc36bc5fdb7bacde7520bc3f85423d645f2ef",
+      "name": "Badge",
+      "mainId": "2:80",
+      "remote": false,
+      "variant": {
+       "tone": "success"
+      },
+      "text": {
+       "label": "Badge"
+      },
+      "textDefaults": {
+       "label": "Badge"
+      }
+     }
+    },
+    {
+     "id": "4:9",
+     "type": "INSTANCE",
+     "name": "Button",
+     "visible": true,
+     "width": 74,
+     "height": 26,
+     "sizing": {
+      "h": "HUG",
+      "v": "HUG"
+     },
+     "absolute": false,
+     "fills": [],
+     "strokes": [],
+     "clips": false,
+     "layout": {
+      "mode": "HORIZONTAL",
+      "gap": {
+       "value": 0
+      },
+      "padding": [
+       {
+        "value": 4,
+        "variable": "spacing/xs"
+       },
+       {
+        "value": 12,
+        "variable": "spacing/md"
+       },
+       {
+        "value": 4,
+        "variable": "spacing/xs"
+       },
+       {
+        "value": 12,
+        "variable": "spacing/md"
+       }
+      ],
+      "wrap": false,
+      "main": "CENTER",
+      "cross": "CENTER"
+     },
+     "radius": {
+      "value": 8,
+      "variable": "radius/md"
+     },
+     "instance": {
+      "key": "f1fbb0219f2df8f20611ce490c970c9aecf5ab62",
+      "name": "Button",
+      "mainId": "2:60",
+      "remote": false,
+      "variant": {
+       "variant": "ghost",
+       "size": "sm"
+      },
+      "text": {
+       "label": "Manage"
+      },
+      "textDefaults": {
+       "label": "Button"
+      }
+     }
+    }
+   ]
+  }
+ },
+ "variables": {
+  "color/bg/canvas": "--ds-color-bg-canvas",
+  "spacing/xl": "--ds-spacing-xl",
+  "spacing/2xl": "--ds-spacing-2xl",
+  "spacing/xs": "--ds-spacing-xs",
+  "color/text/primary": "--ds-color-text-primary",
+  "color/text/secondary": "--ds-color-text-secondary",
+  "spacing/sm": "--ds-spacing-sm",
+  "spacing/lg": "--ds-spacing-lg",
+  "radius/md": "--ds-radius-md",
+  "radius/lg": "--ds-radius-lg",
+  "spacing/md": "--ds-spacing-md",
+  "color/bg/surface": "--ds-color-bg-surface",
+  "color/border/default": "--ds-color-border-default",
+  "radius/full": "--ds-radius-full"
+ }
+}

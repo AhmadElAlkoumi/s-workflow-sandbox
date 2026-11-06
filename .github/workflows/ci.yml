@@ -22,8 +22,34 @@ jobs:
           git diff --exit-code src/ds/tokens/_tokens.scss || (echo "Run 'npm run tokens' and commit the result." && exit 1)
       - name: Feature code uses only the design system
         run: npm run check:ds
+      - name: Figma mapping names real Angular inputs
+        run: npm run check:mapping
+      - name: Ship to Frontend generator (golden output, PR #1 comparison, guardrail)
+        run: npm run generator:test
+      - name: Ship to Frontend plugin builds
+        run: npm run plugin:build
+      - name: Ship to Frontend service (in-memory GitHub)
+        run: npm run service:test
       - name: Build
         run: npx ng build
+
+  generated-code-compiles:
+    name: Generated Team members screen compiles
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - name: Generate the screen from the real Figma snapshot (node 4:11) into this checkout
+        run: |
+          npm run generator:build
+          node tools/generator/dist/cli.js tools/generator/test/fixtures/team-members.snapshot.json
+      - name: Generated code passes the guardrail
+        run: npm run check:ds
+      - name: Generated code builds with strict templates
+        run: npm run tokens && npx ng build
 
   publish-code-connect:
     name: Publish Code Connect to Figma
